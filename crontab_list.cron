@@ -1,0 +1,180 @@
+# 每3天的23:50分清理一次日志(互助码不清理，proc_file.sh对该文件进行了去重)
+#50 23 */3 * * find /logs -name '*.log' | grep -v 'sharecode' | xargs rm -rf 2>&1
+
+# 京东资产变动通知
+2 9 * * * /usr/local/bin/ts-node /scripts/jd_bean_change >>/logs/京东资产变动通知.log 2>&1
+
+# 领京豆额外奖励
+10 7 * * * /usr/local/bin/ts-node /scripts/jd_bean_home >>/logs/领京豆额外奖励.log 2>&1
+
+# 省钱大赢家之翻翻乐
+20 * * * * /usr/local/bin/ts-node /scripts/jd_big_winner >>/logs/省钱大赢家之翻翻乐.log 2>&1
+
+# 东东超市兑换奖品
+0,30 0 * * * /usr/local/bin/ts-node /scripts/jd_blueCoin >>/logs/东东超市兑换奖品.log 2>&1
+
+# 口袋书店
+1 8,12,18 * * * /usr/local/bin/ts-node /scripts/jd_bookshop >>/logs/口袋书店.log 2>&1
+
+# 京东汽车
+10 7 * * * /usr/local/bin/ts-node /scripts/jd_car >>/logs/京东汽车.log 2>&1
+
+# 京东汽车兑换
+0 0 * * * /usr/local/bin/ts-node /scripts/jd_car_exchange >>/logs/京东汽车兑换.log 2>&1
+
+# 签到领现金
+2 0-23/4 * * * /usr/local/bin/ts-node /scripts/jd_cash >>/logs/签到领现金.log 2>&1
+
+# 京喜财富岛
+5 8,13,19 * * * /usr/local/bin/ts-node /scripts/jd_cfd >>/logs/京喜财富岛.log 2>&1
+
+# 摇京豆
+5 0,23 * * * /usr/local/bin/ts-node /scripts/jd_club_lottery >>/logs/摇京豆.log 2>&1
+
+# crazyJoy任务
+10 9 * * * /usr/local/bin/ts-node /scripts/jd_crazy_joy >>/logs/crazyJoy任务.log 2>&1
+
+# 监控crazyJoy分红
+10 12 * * * /usr/local/bin/ts-node /scripts/jd_crazy_joy_bonus >>/logs/监控crazyJoy分红.log 2>&1
+
+# crazyJoy挂机
+10 1,12 * * * /usr/local/bin/ts-node /scripts/jd_crazy_joy_coin >>/logs/crazyJoy挂机.log 2>&1
+
+# 天天提鹅
+10 * * * * /usr/local/bin/ts-node /scripts/jd_daily_egg >>/logs/天天提鹅.log 2>&1
+
+# 小鸽有礼-每日抽奖
+13 1,22,23 * * * /usr/local/bin/ts-node /scripts/jd_daily_lottery >>/logs/每日抽奖.log 2>&1
+
+# 京喜工厂
+10 * * * * /usr/local/bin/ts-node /scripts/jd_dreamFactory >>/logs/京喜工厂.log 2>&1
+
+# 京东家庭号
+1 12,23 * * * /usr/local/bin/ts-node /scripts/jd_family >>/logs/京东家庭号.log 2>&1
+
+# 东东农场
+5 6-18/6 * * * /usr/local/bin/ts-node /scripts/jd_fruit >>/logs/东东农场.log 2>&1
+
+# 金榜创造营
+13 1,22 * * * /usr/local/bin/ts-node /scripts/jd_gold_creator >>/logs/金榜创造营.log 2>&1
+
+# 东东健康社区
+13 1,6,22 * * * /usr/local/bin/ts-node /scripts/jd_health >>/logs/东东健康社区.log 2>&1
+
+# 东东健康社区收集能量收集
+5-45/20 * * * * /usr/local/bin/ts-node /scripts/jd_health_collect >>/logs/东东健康社区收集能量.log 2>&1
+
+# 东东工厂
+10 * * * * /usr/local/bin/ts-node /scripts/jd_jdfactory >>/logs/东东工厂.log 2>&1
+
+# 京东赚赚
+10 0 * * * /usr/local/bin/ts-node /scripts/jd_jdzz >>/logs/京东赚赚.log 2>&1
+
+# 领金贴
+10 0 * * * /usr/local/bin/ts-node /scripts/jd_jin_tie >>/logs/领金贴.log 2>&1
+
+# 宠汪汪
+15 0-23/2 * * * /usr/local/bin/ts-node /scripts/jd_joy >>/logs/京东宠汪汪.log 2>&1
+
+# 宠汪汪🐕喂食
+15 0-23/1 * * * /usr/local/bin/ts-node /scripts/jd_joy_feedPets >>/logs/京东宠汪汪喂食.log 2>&1
+
+# 宠汪汪积分兑换奖品
+0 0-16/8 * * * /usr/local/bin/ts-node /scripts/jd_joy_reward >>/logs/宠汪汪积分兑换奖品.log 2>&1
+
+# 宠汪汪赛跑
+15 10 * * * /usr/local/bin/ts-node /scripts/jd_joy_run >>/logs/宠汪汪邀请助力与赛跑助力.log 2>&1
+
+# 宠汪汪偷好友积分与狗粮
+10 0-21/3 * * * /usr/local/bin/ts-node /scripts/jd_joy_steal >>/logs/宠汪汪偷好友积分与狗粮.log 2>&1
+
+# 跳跳乐瓜分京豆
+1 0,11,21 * * * /usr/local/bin/ts-node /scripts/jd_jump >>/logs/跳跳乐瓜分京豆.log 2>&1
+
+# 京喜领88元红包
+4 10 * * * /usr/local/bin/ts-node /scripts/jd_jxlhb >>/logs/京喜领88元红包.log 2>&1
+
+# 惊喜牧场
+20 0-23/3 * * * /usr/local/bin/ts-node /scripts/jd_jxmc >>/logs/惊喜牧场.log 2>&1
+
+# 京喜农场
+0 9,12,18 * * * /usr/local/bin/ts-node /scripts/jd_jxnc >>/logs/京喜农场.log 2>&1
+
+# 京东快递签到
+10 0 * * * /usr/local/bin/ts-node /scripts/jd_kd >>/logs/京东快递签到.log 2>&1
+
+# 京东直播
+10-20/5 12 * * * /usr/local/bin/ts-node /scripts/jd_live >>/logs/京东直播.log 2>&1
+
+# 超级直播间红包雨
+0,30 0-23/1 * * * /usr/local/bin/ts-node /scripts/jd_live_redrain >>/logs/超级直播间红包雨.log 2>&1
+
+# 幸运大转盘
+4 10 * * * /usr/local/bin/ts-node /scripts/jd_market_lottery >>/logs/幸运大转盘.log 2>&1
+
+# 新潮品牌狂欢
+4 10 * * * /usr/local/bin/ts-node /scripts/jd_mcxhd >>/logs/新潮品牌狂欢.log 2>&1
+
+# 5G超级盲盒
+0 0,1-23/3 * * * /usr/local/bin/ts-node /scripts/jd_mohe >>/logs/5G超级盲盒.log 2>&1
+
+# 京东摇钱树
+3 0-23/2 * * * /usr/local/bin/ts-node /scripts/jd_moneyTree >>/logs/京东摇钱树.log 2>&1
+
+# 京东秒秒币
+10 7 * * * /usr/local/bin/ts-node /scripts/jd_ms >>/logs/京东秒秒币.log 2>&1
+
+# 点点券
+10 0,20 * * * /usr/local/bin/ts-node /scripts/jd_necklace >>/logs/点点券.log 2>&1
+
+# 女装盲盒抽京豆
+35 1,23 * * * /usr/local/bin/ts-node /scripts/jd_nzmh >>/logs/女装盲盒.log 2>&1
+
+# 东东萌宠
+15 6-18/6 * * * /usr/local/bin/ts-node /scripts/jd_pet >>/logs/东东萌宠.log 2>&1
+
+# 金融养猪
+12 0-23/6 * * * /usr/local/bin/ts-node /scripts/jd_pigPet >>/logs/京东金融养猪猪.log 2>&1
+
+# 京东种豆得豆
+1 7-21/2 * * * /usr/local/bin/ts-node /scripts/jd_plantBean >>/logs/京东种豆得豆.log 2>&1
+
+# 京东保价
+0 2 * * * /usr/local/bin/ts-node /scripts/jd_price >>/logs/京东保价.log 2>&1
+
+# 京东全民开红包
+1 1,2,23 * * * /usr/local/bin/ts-node /scripts/jd_redPacket >>/logs/京东全民开红包.log 2>&1
+
+# 闪购盲盒
+20 8 * * * /usr/local/bin/ts-node /scripts/jd_sgmh >>/logs/闪购盲盒.log 2>&1
+
+# 进店领豆
+10 0 * * * /usr/local/bin/ts-node /scripts/jd_shop >>/logs/进店领豆.log 2>&1
+
+# 东东小窝
+16 22 * * * /usr/local/bin/ts-node /scripts/jd_small_home >>/logs/东东小窝.log 2>&1
+
+# ✈️天天加速
+8 0-23/3 * * * /usr/local/bin/ts-node /scripts/jd_speed >>/logs/京东天天加速.log 2>&1
+
+# 京东极速版红包
+20 0,22 * * * /usr/local/bin/ts-node /scripts/jd_speed_redpocke >>/logs/京东极速版红包.log 2>&1
+
+# 京东极速版
+0 7 * * * /usr/local/bin/ts-node /scripts/jd_speed_sign >>/logs/京东极速版.log 2>&1
+
+# 明星小店
+0 1,21 * * * /usr/local/bin/ts-node /scripts/jd_star_shop >>/logs/明星小店.log 2>&1
+
+# 东东超市
+11 * * * * /usr/local/bin/ts-node /scripts/jd_superMarket >>/logs/东东超市.log 2>&1
+
+# 赚京豆
+10 0,7,23 * * * /usr/local/bin/ts-node /scripts/jd_syj >>/logs/赚京豆.log 2>&1
+
+# 取关京东店铺和商品
+55 23 * * * /usr/local/bin/ts-node /scripts/jd_unsubscribe >>/logs/取关京东店铺商品.log 2>&1
+
+# 家电星推官
+0 0 * * * /usr/local/bin/ts-node /scripts/jd_xtg >>/logs/家电星推官.log 2>&1
+

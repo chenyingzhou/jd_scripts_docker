@@ -1,0 +1,12 @@
+version: "3"
+services:
+  jd_scripts:
+    image: chenyingzhou/jd_scripts
+    restart: always
+    container_name: jd_scripts
+    volumes:
+      - ./logs:/logs
+    environment:
+      JD_COOKIE: |-
+        pt_key=xxx;pt_pin=xxx;note=xxx;
+        pt_key=xxx;pt_pin=xxx;note=xxx;
