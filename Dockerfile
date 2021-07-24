@@ -1,21 +1,31 @@
-FROM ubuntu:20.04
+FROM alpine:3.12
 
-RUN apt-get update \
-    && sh -c '/bin/echo -e "6\n70" | apt-get install -y tzdata' \
-    && apt-get install -y nodejs npm cron \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN set -ex \
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache tzdata git nodejs moreutils npm curl jq openssh-client \
+    && rm -rf /var/cache/apk/* \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && npm config set registry https://registry.npm.taobao.org
 
-# 需要将jd_scripts项目放到这个目录，无论通过任何方式
-# git clone git@github.com:JDHelloWorld/jd_scripts.git
+# 需要将jd_scripts项目放到这个目录，如：git clone -b main git@github.com:JDHelloWorld/jd_scripts.git
 COPY ./jd_scripts /scripts
 COPY ./crontab_list.cron /crontab_list.cron
-RUN crontab /crontab_list.cron
 
-RUN npm install typescript -g \
-    && npm install ts-node -g \
-    && cd /scripts \
-    && npm install
+RUN cd /scripts \
+    && npm install \
+    && npm install typescript \
+    && npm install ts-node \
+    && ln -s /scripts/node_modules/ts-node/dist/bin.js /usr/bin/ts-node
 
-CMD ["cron", "-f"]
+WORKDIR /scripts
+
+RUN { \
+        echo "#!/bin/sh"; \
+        echo "crontab /crontab_list.cron"; \
+        echo "crond -f"; \
+    } | tee /start.sh \
+    && chmod +x /start.sh
+
+ENTRYPOINT ["/start.sh"]
