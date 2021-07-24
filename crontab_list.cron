@@ -1,5 +1,5 @@
-# 每3天的23:50分清理一次日志(互助码不清理，proc_file.sh对该文件进行了去重)
-#50 23 */3 * * find /logs -name '*.log' | grep -v 'sharecode' | xargs rm -rf 2>&1
+# 每3天的23:50分清理一次日志
+50 23 */3 * * rm -rf /logs/*.log 2>&1
 
 # 京东资产变动通知
 2 9 * * * /usr/bin/ts-node /scripts/jd_bean_change >>/logs/京东资产变动通知.log 2>&1
