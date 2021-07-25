@@ -18,7 +18,7 @@ RUN apt-get update \
 # 需要将jd_scripts项目放到这个目录，如：git clone -b main git@github.com:JDHelloWorld/jd_scripts.git
 COPY ./jd_scripts /scripts
 RUN cd /scripts \
-    && npm config set registry https://registry.npm.taobao.org \
+#    && npm config set registry https://registry.npm.taobao.org \
     && npm install \
     && npm install typescript -g \
     && tsc *.ts
