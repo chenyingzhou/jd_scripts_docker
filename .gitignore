@@ -1,4 +1,4 @@
 .idea
 jd_scripts
-logs/*.log
+logs
 docker-compose.yml
