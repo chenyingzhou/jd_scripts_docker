@@ -21,6 +21,7 @@ RUN cd /scripts \
 #    && npm config set registry https://registry.npm.taobao.org \
     && npm install \
     && npm install typescript -g \
+    && rm -rf jd_qq_pasture.ts \
     && tsc *.ts
 
 COPY ./crontab.cron /crontab.cron
