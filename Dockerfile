@@ -20,17 +20,9 @@ COPY ./jd_scripts /scripts
 RUN cd /scripts \
 #    && npm config set registry https://registry.npm.taobao.org \
     && npm install \
-    && npm install typescript -g \
-    && rm -rf jd_qq_pasture.ts \
-    && tsc *.ts
+    && npm install typescript -g
 
 COPY ./crontab.cron /crontab.cron
-RUN { \
-        echo "#!/bin/sh"; \
-        echo "env >/crontab.env"; \
-        echo "crontab /crontab.cron"; \
-        echo "cron -f"; \
-    } | tee /start.sh \
-    && chmod +x /start.sh
+COPY ./start.sh /start.sh
 
 ENTRYPOINT ["/start.sh"]
